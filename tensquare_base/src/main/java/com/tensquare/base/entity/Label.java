@@ -4,17 +4,18 @@ package com.tensquare.base.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @ClassName Label
  * @Author lish
  * @Date 2019/4/11 18:19
- * @description TODO
+ * @description 标签实体类
  */
 
 @Entity
 @Table(name="tb_label")
-public class Label {
+public class Label implements Serializable{
 
     @Id
     private String id;//

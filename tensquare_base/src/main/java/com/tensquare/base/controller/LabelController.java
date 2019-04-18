@@ -2,9 +2,11 @@ package com.tensquare.base.controller;
 
 import com.tensquare.base.entity.Label;
 import com.tensquare.base.service.LabelService;
+import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
@@ -45,6 +47,7 @@ public class LabelController {
         return new Result(true, StatusCode.OK,"查询成功",labelService.findById(labelId));
     }
 
+
     @RequestMapping(method = RequestMethod.POST)
     public Result save(@RequestBody Label label){
         labelService.save(label);
@@ -63,6 +66,18 @@ public class LabelController {
     public Result delete(@PathVariable String labelId){
         labelService.deleteById(labelId);
         return new Result(true, StatusCode.OK,"删除成功");
+    }
+
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+    public Result search(@RequestBody Label label){
+        return new Result(true, StatusCode.OK,"查询成功",labelService.search(label));
+    }
+
+
+    @RequestMapping(value = "/search/{page}/{size}",method = RequestMethod.POST)
+    public Result searchPage(@RequestBody Label label,@PathVariable Integer page ,@PathVariable Integer size){
+        Page<Label> labelPage = labelService.searchPage(label, page, size);
+        return new Result(true, StatusCode.OK,"查询成功",new PageResult<Label>(labelPage.getTotalElements(),labelPage.getContent()));
     }
 
 
