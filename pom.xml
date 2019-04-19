@@ -11,6 +11,7 @@
         <module>tensquare_commom</module>
         <module>tensquare_base</module>
         <module>tensquare_qa</module>
+        <module>tensquare_recruit</module>
     </modules>
     <packaging>pom</packaging>
 
