@@ -10,6 +10,7 @@
     <modules>
         <module>tensquare_commom</module>
         <module>tensquare_base</module>
+        <module>tensquare_qa</module>
     </modules>
     <packaging>pom</packaging>
 
